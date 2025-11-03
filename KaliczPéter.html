@@ -4,6 +4,7 @@
 <!-- Fejléc -->
 <HEAD>
 <TITLE>Rólam</TITLE>
+<meta charset="utf-8">
 </HEAD>
 <!-- Az oldal törzse -->
 <BODY>
@@ -28,5 +29,24 @@
 <li>Iringó</li>
 <li>Filó</li>
 </ol>
+<h2>Kedvenc színem</h2>
+<!-- Gomb létrehozása a klikkelésre javascirptet futtat. -->
+<button type="button" onclick="document.getElementById('demo').innerText = 'Kék.'">Mi lehet a kedvenc színem?</button>
+<!-- Bekezdés, azonosítóval (id) ellátva -->
+<p id="demo">Kitalálod?</p>
+
+<h1>Első JavaScript függvényem</h1>
+
+<p>Függvénnyel változtatom meg a következő szöveget:</p>
+
+<button type="button" onclick="myFunction()">Kattints!</button>
+
+<p id="demo1">Ez a szöveg fog megváltozni.</p>
+
+<script>
+function myFunction() { 
+  document.getElementById("demo1").innerHTML = "Ez a JavaScript függvény hatása!";
+}
+</script>
 </BODY>
 </HTML>
