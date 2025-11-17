@@ -31,8 +31,17 @@
 <h1>Első JavaScript függvényem</h1>
 <p>Függvénnyel változtatom meg a következő szöveget:</p>
 <button type="button" onclick="myFunction()">Click Me!</button>
-<p id="demo2">This is a demonstration.</p>
+<p id="demo2">Ez a szöveg fog megváltozni.</p>
+
 <script>
+function terulet(oldalHossz) // a függvény definíciója
+			{
+				// function body
+				terulet = oldalHossz * oldalHossz // négyzet terület számítása
+				return terulet; // visszatérési érté
+			}
+			document.write('6 cm oldalhossz négyzet területe:', terulet(6), ' cm^2 a terület<br>');
+
 function myFunction() {
  document.getElementById("demo2").innerHTML = "Ez a JavaScript függvény hatása!";
  }
