@@ -1,22 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Geodéziai Műszerek</title>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teszt térkép</title>
+  <style>
+    /* A térkép méretének beállítása */
+    #map {
+      height: 100vh; /* A térkép teljes ablakméretet kap */
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
+  <h1>Győr Térkép </h1>
+  <!-- A térkép megjelenítésére szolgáló div -->
+  <div id="map"></div>
 
-<h1>Az eddig általam használt Műszerek</h1>
-<p>Az lábbiakban egy felsorolás ismereteti az eddig általam használt eszközök listáját.</p>
+  <script> 
+function initMap() {
+  // A térkép kezdő helyzete és nagyítása
+  const gyor = { lat: 47.6875, lng: 17.6504 }; // Győr
 
-<ul>
-  <li>WIld-T01</li>
-  <li>Zeiss THEO 010</li>
-  <li>Zeiss Theo 010B</li>
-  <li>LEica TS03</li>
-</ul>
-<script>
-alert ("Ez egy javaScript üzenet!");
+  // Térkép inicializálása
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 13,
+    center: gyor,
+  });
+
+  // Középpont marker (sima marker)
+  new google.maps.Marker({
+    position: gyor,
+    map: map,
+    title: "Győr",
+  });
+
+  // Városháza koordináták
+  const varoshaza = { lat: 47.68329625516541, lng: 17.635192513450722 };
+
+  // Épület ikon marker
+  new google.maps.Marker({
+    position: varoshaza,
+    map: map,
+    title: "Győr Városháza",
+    icon: {
+      url: "https://maps.gstatic.com/mapfiles/kml/shapes/schools.png",
+      scaledSize: new google.maps.Size(32, 32),
+    }
+  });
+}
 </script>
-
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap">
+  </script>
 </body>
 </html>
