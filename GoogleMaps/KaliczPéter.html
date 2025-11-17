@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kunhegyes térkép</title>
+  <style>
+    /* A térkép méretének beállítása */
+    #map {
+      height: 100vh; /* A térkép teljes ablakméretet kap */
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kunhegyes Térkép </h1>
+  <!-- A térkép megjelenítésére szolgáló div -->
+  <div id="map"></div>
+
+  <script>
+    function initMap() {
+      // A térkép kezdő helyzete és nagyítása
+      const kunhegyes = { lat: 47.369545, lng: 20.631484 };
+	  const foter = { lat: 47.369498, lng: 20.631798 };
+      // Térkép inicializálása
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 11, // Nagyítási szint
+        center: kunhegyes, // A térkép középpontja
+      });
+	  const marker = new google.maps.Marker({
+        map: map,
+        position: foter,
+        title: 'Fő tér'
+    });
+	  }
+  </script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap">
+  </script>
+</body>
+</html>
