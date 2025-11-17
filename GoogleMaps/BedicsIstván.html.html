@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teszt térkép</title>
+  <title>Győrújbarát térkép</title>
   <style>
     /* A térkép méretének beállítása */
     #map {
@@ -21,12 +21,17 @@
     function initMap() {
       // A térkép kezdő helyzete és nagyítása
       const győrújbarát = { lat: 47.60870080305341, lng: 17.644581043263273 };
+	  const otthon = { lat: 47.61682246096206, lng: 17.632185931543866 };
       // Térkép inicializálása
       const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 13, // Nagyítási szint
         center: győrújbarát, // A térkép középpontja
       }); 
-	  
+	  const marker = new google.maps.Marker({
+        map: map,
+        position: otthon,
+        title: 'Az én otthonom'
+    });
 	  }
   </script>
   <script async
