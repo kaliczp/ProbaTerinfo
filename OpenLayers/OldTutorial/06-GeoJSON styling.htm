@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="ol.css" type="text/css"> <!-- styles for OpenLayers -->
+		<script src="ol.js" type="text/javascript"></script> <!-- Loading OpenLayers Library -->
+		<title>OpenLayers 3 example</title>
+	</head>
+	<body>
+		<div id="map" style="width: 100%; height: 600px"></div> <!-- Map Render target -->
+		<script>
+			var style = new ol.style.Style( // style for vectors
+			{
+				fill: new ol.style.Fill({ color: 'rgba(255, 255, 255, 0.6)' }), // fill
+				stroke: new ol.style.Stroke({ color: '#319FD3', width: 1 }), // outline
+				text: new ol.style.Text( // label style
+				{
+					font: '12px Calibri,sans-serif', // font name
+					fill: new ol.style.Fill({ color: '#000' }), // fill
+					stroke: new ol.style.Stroke({ color: '#fff', width: 3 }), // outline
+				})
+			});
+			
+			var styles = [style]; // style array
+			
+			var map=new ol.Map( // creating a new OpenLayers Map object
+			{
+				layers: // enumerating layers: Image, Tile or Vector
+				[
+					new ol.layer.Tile( // new TileMap
+					{
+						source: new ol.source.OSM() // OpenStreetMap - Tile based
+						//source: new ol.source.MapQuest({ layer:'sat' }) // Satellite Image - Tile based, layers: sat, osm, hyb
+					}),
+					new ol.layer.Vector( // new Vector Layer
+					{
+						source: new ol.source.Vector( // new vector source
+						{
+							url: 'https://openlayers.org/en/v5.2.0/examples/data/geojson/countries.geojson', // data source
+							format: new ol.format.GeoJSON() // data format, can be KML
+						}),
+						
+						opacity: 0.6, // transparent layer
+						// visible: true,
+							
+						style: function(feature, resolution) // style function
+						{
+							// classifier
+							if(feature.get('name') < 'F') color='#ff4040';
+							else if(feature.get('name') < 'K') color='#ffc040';
+							else if(feature.get('name') < 'P') color='#40ff40';
+							else if(feature.get('name') < 'V') color='#4080ff';
+							else color='#ff40ff';
+							style.getFill().setColor( color );
+
+							// labeller
+							style.getText().setText( resolution < 5000 ? feature.get('name') : ''); // modify the label
+							return styles;
+						}
+					})
+				],
+				
+				controls: ol.control.defaults(), // default controls
+				
+				view: new ol.View( // new View
+				{
+					center: ol.proj.fromLonLat([16.58, 47.677]), // From Longitute,Latitude
+					zoom: 4 // zoom level
+				}),
+
+				target: 'map' // set render target
+			});
+			
+		</script>
+	</body>
+</html>
