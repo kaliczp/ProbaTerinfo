@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Érdekességek rólam </title>
+<title>Első Javascript by GM</title>
+		<meta charset="utf-8">
 </head>
 <body>
 <h1>Kezdés és bemutatkozás</h1>
@@ -17,3 +18,35 @@ van négy testvérem. Csrkészkedem. Érdekel minden ami elektromos, vagy mechan
   <li>Rántott sajt</li>
   <li>Töltött paprika</li>
 </ul>
+<h2>Kedvenc színem</h2>
+<button onclick="showColor()">Mi a kedvenc színem?</button>
+<p id="colorAnswer"></p>
+
+<script>
+function showColor() {
+  document.getElementById("colorAnswer").innerHTML = "Válasz: Zöld";
+}
+</script>
+<h2>Négyzet terület számítása</h2>
+<p>Írd be a négyzet oldalát (cm):</p>
+<input type="number" id="side" placeholder="oldal hossza">
+<button onclick="calcArea()">Számol</button>
+<p id="areaResult"></p>
+
+<script>
+function calcArea() {
+  let side = document.getElementById("side").value;
+  if (side > 0) {
+    let area = side * side;
+    document.getElementById("areaResult").innerHTML = 
+      "A négyzet területe így: " + area + " cm² lett.";
+  } else {
+    document.getElementById("areaResult").innerHTML =
+      "Ez így nem jó! Kérlek, adj meg egy pozitív számot!";
+  }
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Első Javascript by MD</title>
+		<meta charset="utf-8">
+	</head>
+	
+	<body>
+		<h1>Bemutatkozás</h1>
+				<p>Csak egy <b>kevés</b> információ magamról.</p>
+			<h2>Kedvteléseim vagy hobbijaim</h2>
+				<p>
+				<ul>
+					<li>olvasás</li>
+					<li>sorozatnézés</li>
+					<li>főzés</li>
+					<li>csillagászat</li>
+					<li>túrázás, vagy csak sétálgatás az erdőben</li>
+				</ul>
+				</p>
+			<h2>Családtagjaim</h2>
+				<p>
+				<ol>
+					<li>Marianna</li>
+					<li>Zsolt</li>
+					<li>Dominik</li>
+					<li>Dániel</li>
+				</ol>
+				</p>
+			<h2>Kedvenc színem</h2>
+			<!-- Gomb létrehozása -->
+				<button type ="button"onclick="document.getElementById('demo').innerHTML = 'Kék'">Mi a kedvenc színem?</button>
+				<p id="demo">...</p>
+			<h2>Első Javascript függvényem</h2>
+				<button type ="buttton"onclick="myFunction()">Kattints ide!</button>
+				<p id="demo1">Meg fog változni a szöveg!</p>
+			<script>
+			function myFunction() {
+			document.getElementById("demo1").innerHTML = "És kattintás!";
+			}
+			</script>
+	</body>
+<html>

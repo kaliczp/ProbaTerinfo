@@ -1,15 +1,17 @@
-<! DOCTYPE html >
-<!-- Az oldal nyitó tag-je -->
-<HTML>
-<!-- Fejléc -->
-<HEAD>
-<!-- Az oldal törzse -->
-<BODY>
-<!-- Címsor1 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8>
+<title>Cím</title>
+</head>
+<body>
+
+<h1 id="demo">Fejléc</h1>
+<p>Első bekezdés</p>
 <h1>Bemutatkozás</h1>
 <!-- A nevem Balázs -->
 <p>Ne tudd meg ki vagyok!</p>
-<h2>Magamról></h2>
+<h2>Magamról</h2>
 <!-- 20 éves vagyok -->
 <h3>Kedvteléseim</h3>
 <!-- Sport, videójátékok -->
@@ -23,5 +25,18 @@
 <li>Csongor</li>
 <li>Márk</li>
 </ol>
-</BODY>
-</HTML>
+
+<script>
+document.getElementById("demo").innerHTML = "Hello JavaScript!";
+
+function terulet(oldalHossz) // a függvény definíciója
+			{
+				// function body
+				terulet = oldalHossz * oldalHossz // négyzet terület számítása
+				return terulet; // visszatérési érték
+			}
+document.write('5 cm oldalhossz négyzet területe: ', terulet(5), ' cm^2 a terület<br>');
+</script>
+
+</body>
+</html>

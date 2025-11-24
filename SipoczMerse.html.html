@@ -2,7 +2,10 @@
 <!-- Az oldal nyitó tagaja je-->
 <html>
 <!-- Fejléc -->
-<head>
+<HEAD>
+<TITLE>Rólam</TITLE>
+<meta charset="utf-8">
+</HEAD>
 <!-- Az oldal törzse -->
 <body>
 <!-- Címsorl -->
@@ -28,3 +31,22 @@
 </ol>
 </body>
 </html>
+<h2>Kedvenc színem</h2>
+<!-- Gomb létrehozása a kattintásra JavaScriptet futtat. -->
+<button type="button" onclick="document.getElementById('demo').innerText  = 'Lila.'">Mi lehet a kedvenc színem?</button>
+<!-- Bekezdés, azonosítóval (id) ellátva -->
+<p id="demo">Kitalálod?</p>
+
+<h1>Első JavaScript függvényem</h1>
+
+<p>Függvénnyel változtatom meg a következő szöveget:</p>
+
+<button type="button" onclick="myFunction()">Click Me!</button>
+
+<p id="demo2">This is a demonstration.</p>
+
+<script>
+function myFunction() {
+ document.getElementById("demo2").innerHTML = "Ez a JavaScript függvény hatása!";
+ }
+ </script>

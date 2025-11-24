@@ -2,6 +2,7 @@
 <html>
 <!-- fejléc -->
 <head>
+<meta charset="utf-8">
 <title>Page Title</title>
 </head>
 <body>
@@ -10,6 +11,20 @@
 <p>bekezdés.</p>
 <!-- bekezdes -->
 <p>This is a paragraph too.</p>
+
+<h1>Első JavaScript függvényem</h1>
+
+<p>Függvénnyel változtatom meg a következő szöveget:</p>
+
+<button type="button" onclick="myFunction()">Kattints!</button>
+
+<p id="demo1">Ez a szöveg fog megváltozni.</p>
+
+<script>
+function myFunction() { 
+  document.getElementById("demo1").innerHTML = "Ez a JavaScript függvény hatása!";
+}
+</script>
 
 </body>
 </html>
