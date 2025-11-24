@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="ol.css" type="text/css"> <!-- styles for OpenLayers -->
+		<script src="ol.js" type="text/javascript"></script> <!-- Loading OpenLayers Library -->
+		<title>OpenLayers 3 example</title>
+	</head>
+	<body>
+		<div id="map" style="width: 100%; height: 600px"></div> <!-- Map Render target -->
+		<script>		
+		
+			var bounds = [672617, 249808, 676434, 251027]; // boundary box
+
+			var projection = new ol.proj.Projection( // Hungarian Unified Projection
+			{
+				code: 'EPSG:23700',
+				units: 'm',
+				axisOrientation: 'neu'
+			});
+
+			var wfsSource = new ol.source.Vector( // single image WMS
+			{
+			});
+
+			var map=new ol.Map( // creating a new OpenLayers Map object
+			{
+				target: 'map', // set render target
+				
+				layers: // enumerating layers: Image, Tile or Vector
+				[
+					new ol.layer.Vector( // new Vector Layer
+					{
+						format: new ol.format.GeoJSON(), // data format, can be KML
+						url: function(extent, resolution, projection) 
+						{
+							return 'http://ims.nyme.hu:8080/geoserver/exp8test1/ows?service=WFS&' + // url, service
+								'version=1.0.0&request=GetFeature&typeName=exp8test1:also_park_vonalak&' + // version, request, layer
+								'outputFormat=application/json&srsname=EPSG:23700&' + // output, projection
+								'bbox=' + extent.join(',') + ',EPSG:23700'; // boundary box
+						},
+							
+						style: new ol.style.Style( // style for vectors
+						{
+							fill: new ol.style.Fill({ color: 'rgba(192, 64, 64, 0.3)' }), // fill
+							stroke: new ol.style.Stroke({ color: '#319FD3', width: 1 }) // outline
+						})
+					})
+				],
+				
+				view: new ol.View( // new View
+				{
+					projection: projection
+				})
+			});
+			
+			map.getView().fit(bounds, map.getSize()); // zoom to boundary
+			
+		</script>
+	</body>
+</html>

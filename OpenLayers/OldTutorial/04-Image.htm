@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="ol.css" type="text/css"> <!-- styles for OpenLayers -->
+		<script src="ol.js" type="text/javascript"></script> <!-- Loading OpenLayers Library -->
+		<title>OpenLayers 3 example</title>
+	</head>
+	<body>
+		<div id="map" style="width: 100%; height: 600px"></div> <!-- Map Render target -->
+		<script>
+		
+			var extent = [0, 0, 1024, 968]; // image boundary box
+			var projection = new ol.proj.Projection( // MapView need a projection
+			{
+				code: 'xkcd-image',
+				units: 'pixels', // pixel
+				extent: extent // boundary
+			});
+		
+			var map=new ol.Map( // creating a new OpenLayers Map object
+			{
+				layers: // enumerating layers: Image, Tile or Vector
+				[
+					new ol.layer.Image(
+					{
+						source: new ol.source.ImageStatic(
+						{
+							url: 'online_communities.png',
+							projection: projection,
+							imageExtent: extent
+						})
+					})
+				],
+				
+				controls: ol.control.defaults(), // default controls
+				
+				view: new ol.View( // new View
+				{
+					projection: projection,
+					center: ol.extent.getCenter(extent), // From var extent
+					zoom: 2 // zoom level
+				}),
+
+				target: 'map' // set render target
+			});
+			
+		</script>
+	</body>
+</html>
