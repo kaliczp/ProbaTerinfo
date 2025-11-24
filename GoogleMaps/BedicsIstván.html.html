@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teszt térkép</title>
+  <title>Győrújbarát térkép</title>
   <style>
     /* A térkép méretének beállítása */
     #map {
@@ -13,32 +13,29 @@
   </style>
 </head>
 <body>
-  <h1>Borsodnádasd Térkép </h1>
+  <h1>Győrújbarát Térkép </h1>
   <!-- A térkép megjelenítésére szolgáló div -->
   <div id="map"></div>
-
+  
   <script>
     function initMap() {
       // A térkép kezdő helyzete és nagyítása
-      const borsodnadasd = { lat: 48.12292560182333, lng: 20.24775199526981 };
-	  const mainsquare = { lat: 48.12292560182333, lng: 20.24775199526981 };
+      const győrújbarát = { lat: 47.60870080305341, lng: 17.644581043263273 };
+	  const otthon = { lat: 47.61682246096206, lng: 17.632185931543866 };
       // Térkép inicializálása
       const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12, // Nagyítási szint
-        center: borsodnadasd, // A térkép középpontja
-      });
-	  //Marker
+        zoom: 13, // Nagyítási szint
+        center: győrújbarát, // A térkép középpontja
+      }); 
 	  const marker = new google.maps.Marker({
         map: map,
-        position: mainsquare,
-        title: 'Nagyanyám háza'
+        position: otthon,
+        title: 'Az én otthonom'
     });
 	  }
   </script>
-  <script 
-    src=
-	"https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap">
-  defer>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap">
   </script>
 </body>
 </html>
