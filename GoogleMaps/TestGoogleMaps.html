@@ -13,23 +13,32 @@
   </style>
 </head>
 <body>
-  <h1>Siófok Térkép </h1>
+  <h1>Borsodnádasd Térkép </h1>
   <!-- A térkép megjelenítésére szolgáló div -->
   <div id="map"></div>
 
   <script>
     function initMap() {
       // A térkép kezdő helyzete és nagyítása
-      const papa = { lat: 47.3324, lng: 17.4658 };
+      const borsodnadasd = { lat: 48.12292560182333, lng: 20.24775199526981 };
+	  const mainsquare = { lat: 48.12292560182333, lng: 20.24775199526981 };
       // Térkép inicializálása
       const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 9, // Nagyítási szint
-        center: papa, // A térkép középpontja
+        zoom: 12, // Nagyítási szint
+        center: borsodnadasd, // A térkép középpontja
       });
+	  //Marker
+	  const marker = new google.maps.Marker({
+        map: map,
+        position: mainsquare,
+        title: 'Nagyanyám háza'
+    });
 	  }
   </script>
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap">
+  <script 
+    src=
+	"https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap">
+  defer>
   </script>
 </body>
 </html>
