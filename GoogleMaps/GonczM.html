@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomáz térkép</title>
+  <style>
+    /* A térkép méretének beállítása */
+    #map {
+      height: 100vh; /* A térkép teljes ablakméretet kap */
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pomáz Térkép</h1>
+  <p1> A nagyobb marker jelöli Pomáz középpontját, illetve a kisebb pont a családi nyaralónkat jelöli a hegyoldalban.<p1>
+
+  <!-- A térkép megjelenítésére szolgáló div -->
+  <div id="map"></div>
+
+  <script>
+    function initMap() {
+      // Pomáz koordinátái
+      const pomaz = { lat: 47.644030, lng: 19.020260 };
+
+      // Második marker koordinátája (színes pont)
+      const haziko = { lat: 47.658547, lng: 18.999396 };
+
+      // Térkép inicializálása
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 13, // Nagyítási szint
+        center: pomaz, // A térkép középpontja
+      });
+
+      // Alap marker Pomáz központjához
+      const marker = new google.maps.Marker({
+        map: map,
+        position: pomaz,
+        title: 'Pomáz központja'
+      });
+
+      // Színes pont jelölő 📌
+      const dotMarker = new google.maps.Marker({
+        map: map,
+        position: haziko,
+        title: 'Családi nyaraló',
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 8,           // méret
+          fillColor: "#FF0000",  // piros
+          fillOpacity: 1,
+          strokeWeight: 2,
+          strokeColor: "#FFFFFF"
+        }
+      });
+    }
+  </script>
+
+  <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap"
+    defer>
+  </script>
+</body>
+</html>
