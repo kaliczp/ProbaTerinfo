@@ -91,3 +91,47 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szombathely Térkép</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    h1 { text-align: center; margin: 10px 0; }
+    #map { height: 100vh; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>Szombathely Térkép</h1>
+
+  <div id="map"></div>
+
+  <script>
+    function initMap() {
+      // Szombathely koordinátái
+      const szombathely = { lat: 47.2305, lng: 16.6219 };
+      // Csónakázó-tó koordinátái
+      const csontazoTo = { lat: 47.2396, lng: 16.6264 };
+
+      // Térkép inicializálása
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: szombathely,
+      });
+
+      // Marker létrehozása a Csónakázó-tónál
+      const marker = new google.maps.Marker({
+        position: csontazoTo,
+        map: map,
+        title: "Csónakázó-tó"
+      });
+    }
+  </script>
+
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap">
+  </script>
+</body>
+</html>
