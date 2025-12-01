@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="ol.css" type="text/css"> <!-- styles for OpenLayers -->
+		<script src="ol.js" type="text/javascript"></script> <!-- Loading OpenLayers Library -->
+		<title>OpenLayers 3 example</title>
+	</head>
+	<body>
+		<div id="map" style="width: 100%; height: 600px"></div> <!-- Map Render target -->
+		<script>
+			var map=new ol.Map( // creating a new OpenLayers Map object
+			{
+				layers: // enumerating layers: Image, Tile or Vector
+				[
+					new ol.layer.Tile( // new TileMap
+					{
+						source: new ol.source.OSM() // OpenStreetMap - Tile based
+						//source: new ol.source.Stamen({ layer: 'toner' }) // Black and White
+					})
+				],
+				
+				controls: ol.control.defaults(), // default controls
+								
+				view: new ol.View( // new View
+				{
+					center: ol.proj.fromLonLat([17.632213, 47.616836]), // From Longitute,Latitude
+					zoom: 8 // zoom level
+				}),
+
+				target: 'map' // set render target
+			});
+			
+			var graticule = new ol.Graticule( // new Graticule layer, not for zoom higher than 10
+			{
+				strokeStyle: new ol.style.Stroke( // set linetype
+				{
+					color: 'rgba(32,64,96,0.5)', // color in RGB format
+					width: 2, // line width
+					lineDash: [0.5, 4] // line pattern
+				})
+			});
+			graticule.setMap(map);
+			
+		</script>
+	</body>
+</html>
