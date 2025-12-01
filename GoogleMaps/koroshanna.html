@@ -1,0 +1,137 @@
+<!--
+  google-maps-page.html
+  Single-file example Google Maps page using the API key you provided.
+
+  IMPORTANT SECURITY NOTES (also visible in the file):
+  - Restrict this API key to HTTP referrers (your domain) in Google Cloud Console.
+  - Enable only the "Maps JavaScript API" (and any other required APIs) for this key.
+  - Do NOT publish unrestricted keys in public repositories.
+  - For production, load the key from a server-side secret or environment variable and avoid embedding it in client-side code when possible.
+-->
+
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google Maps példa</title>
+  <style>
+    html, body { height: 100%; margin: 0; font-family: Arial, sans-serif; }
+    #map { height: calc(100vh - 80px); width: 100%; }
+    header { padding: 12px 16px; background: #f5f5f5; border-bottom: 1px solid #ddd; }
+    .controls { display:flex; gap:8px; align-items:center; }
+    button { padding:8px 12px; border-radius:6px; border:1px solid #ccc; background:white; cursor:pointer; }
+    .credit { font-size:12px; color:#666; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="controls">
+      <strong>Google Maps demo</strong>
+      <button id="btn-center">Középre (Budapest)</button>
+      <button id="btn-locate">Saját helyzetem</button>
+    </div>
+    <div class="credit">API kulcs: <code>AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4</code> — korlátozd a használatot a Google Cloud Console-ban!</div>
+  </header>
+
+  <div id="map"></div>
+
+  <script>
+    let map, marker;
+
+    function initMap() {
+      const budapest = { lat: 47.4979, lng: 19.0402 };
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: budapest,
+        zoom: 13,
+        mapTypeControl: true,
+        streetViewControl: true,
+        fullscreenControl: true,
+      });
+
+      marker = new google.maps.Marker({
+        position: budapest,
+        map: map,
+        title: 'Budapest (alapállapot)'
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('btn-center').addEventListener('click', () => {
+        const budapest = { lat: 47.4979, lng: 19.0402 };
+        map.panTo(budapest);
+        map.setZoom(13);
+        marker.setPosition(budapest);
+        marker.setTitle('Budapest (kézi középre)');
+      });
+
+      document.getElementById('btn-locate').addEventListener('click', () => {
+        if (!navigator.geolocation) return alert('A böngésző nem támogatja a helymeghatározást.');
+        navigator.geolocation.getCurrentPosition((pos) => {
+          const p = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          map.panTo(p);
+          map.setZoom(15);
+          marker.setPosition(p);
+          marker.setTitle('Saját helyzeted');
+        }, (err) => {
+          alert('Hiba a helyzet lekérése során: ' + err.message);
+        });
+      });
+    });
+  </script>
+
+  <!--
+    Load the Maps JavaScript API. The API key is included below exactly as provided.
+    When you deploy, restrict the key to your domain(s) in Google Cloud Console.
+  -->
+  <script async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap&v=weekly">
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szombathely Térkép</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    h1 { text-align: center; margin: 10px 0; }
+    #map { height: 100vh; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>Szombathely Térkép</h1>
+
+  <div id="map"></div>
+
+  <script>
+    function initMap() {
+      // Szombathely koordinátái
+      const szombathely = { lat: 47.2305, lng: 16.6219 };
+      // Csónakázó-tó koordinátái
+      const csontazoTo = { lat: 47.2396, lng: 16.6264 };
+
+      // Térkép inicializálása
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: szombathely,
+      });
+
+      // Marker létrehozása a Csónakázó-tónál
+      const marker = new google.maps.Marker({
+        position: csontazoTo,
+        map: map,
+        title: "Csónakázó-tó"
+      });
+    }
+  </script>
+
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap">
+  </script>
+</body>
+</html>
