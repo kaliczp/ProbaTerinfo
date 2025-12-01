@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nyíregyháza térkép</title>
+  <style>
+    /* A térkép méretének beállítása */
+    #map {
+      height: 100vh; /* A térkép teljes ablakméretet kap */
+      width: 100%;
+    }
+  </style>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nyíregyháza térkép</title>
+  <style>
+    /* A térkép méretének beállítása */
+    #map {
+      height: 100vh; /* A térkép teljes ablakméretet kap */
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nyíregyháza Térkép </h1>
+  <!-- A térkép megjelenítésére szolgáló div -->
+  <div id="map"></div>
+  
+  <script>
+    function initMap() {
+      // A térkép kezdő helyzete és nagyítása
+      const nyíregyháza = { lat: 47.95470436259017, lng: 21.714144204477375 };
+	  const otthon = { lat: 47.95470436259017, lng: 21.714144204477375 };
+      // Térkép inicializálása
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 13, // Nagyítási szint
+        center: nyíregyháza, // A térkép középpontja
+      }); 
+	  const marker = new google.maps.Marker({
+        map: map,
+        position: otthon,
+        title: 'Az én otthonom'
+    });
+	  }
+  </script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2v8WtXB57rTW6EH9xFkYxk88u02Xrx4&callback=initMap">
+  </script>
+</body>
+</html>
